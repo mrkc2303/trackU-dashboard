@@ -37,12 +37,12 @@ const Dashboard = () => {
 
     const COLORS = ['#00C49F', '#FF8042'];
 
-    const copyToClipboard = (codeToCopy : any) => {
+    const copyToClipboard = (codeToCopy) => {
         navigator.clipboard.writeText(codeToCopy);
         alert('Copied to clipboard');
     };
 
-    const formatDuration = (duration: any, isTotalDuration = false) => {
+    const formatDuration = (duration, isTotalDuration = false) => {
         if (isTotalDuration) {
           const milliseconds = duration % 1000;
           const seconds = Math.floor((duration / 1000) % 60);
@@ -132,7 +132,7 @@ const Dashboard = () => {
     }, [selectedProject])
 
     useEffect(() => {
-        setSelectedUserData(projectData?.uniqueUsers?.find((user: any) => user?.userId === selectedUser))
+        setSelectedUserData(projectData?.uniqueUsers?.find((user) => user?.userId === selectedUser))
     }, [selectedUser])
 
     if(!address) {
@@ -274,9 +274,9 @@ const Dashboard = () => {
                                         className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                                     >
                                         {
-                                        COUNTRIES.map((item: any) => {
+                                        COUNTRIES.map((item, index) => {
                                             return(
-                                            <option selected={userData?.country === item.countryName} value={item.countryName}> {item.emoji} {item.countryName}</option>
+                                            <option key={index} selected={userData?.country === item.countryName} value={item.countryName}> {item.emoji} {item.countryName}</option>
                                             );
                                         })
                                         }
@@ -484,7 +484,7 @@ const Dashboard = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            projectData?.urlPageViewCounts?.map((item: any, index: any) => {
+                                            projectData?.urlPageViewCounts?.map((item, index) => {
                                                 return(
                                                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -548,7 +548,7 @@ const Dashboard = () => {
                         <div className="mt-5 bg-gray-50 dark:bg-gray-800 py-5 flex items-center justify-center">
                             <div className="flex flex-wrap p-5 gap-8">
                             {
-                                projectData?.uniqueUsers?.map((item: any, index: any) => {
+                                projectData?.uniqueUsers?.map((item, index) => {
                                     if(index > 50) {
                                         return;
                                     }
@@ -643,7 +643,7 @@ const Dashboard = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            projectData?.errorTrackData?.map((item: any, index: any) => {
+                                            projectData?.errorTrackData?.map((item, index) => {
                                                 return(
                                                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -696,9 +696,9 @@ const Dashboard = () => {
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an User</label>
                         <select id="countries" onChange={(e) => setSelectedUser(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="NA" selected={selectedUser === "NA"}>Choose an User</option>
-                            {projectData?.uniqueUsers?.map((user: any, index: any) => {
+                            {projectData?.uniqueUsers?.map((user, index) => {
                                 return(
-                                    <option selected={selectedUser === user?.userId} value={user?.userId}>
+                                    <option key={index} selected={selectedUser === user?.userId} value={user?.userId}>
                                         {user?.userId}
                                     </option>
                                 );
@@ -871,7 +871,7 @@ const Dashboard = () => {
           }
         };
       
-        const goToStep = (stepIndex: number) => {
+        const goToStep = (stepIndex) => {
           setCurrentStep(stepIndex);
         };
       
@@ -1010,7 +1010,7 @@ const Dashboard = () => {
                                         </option>
                                     : projects.map((item, index) => {
                                     return(
-                                        <option value={item?._id}>{item?.projectName}</option>
+                                        <option key={index} value={item?._id}>{item?.projectName}</option>
                                     );
                                 })}
                             </select>

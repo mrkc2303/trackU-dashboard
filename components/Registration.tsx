@@ -70,9 +70,9 @@ const ApplicationForm = ({ email, setEmail, phone, setPhone, setCountry, country
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
           >
             {
-              COUNTRIES.map((item: any) => {
+              COUNTRIES.map((item: any, index: any) => {
                 return(
-                <option selected={country === item.countryName} value={item.countryName}> {item.emoji} {item.countryName}</option>
+                <option key={index} selected={country === item.countryName} value={item.countryName}> {item.emoji} {item.countryName}</option>
                 );
               })
             }
@@ -84,9 +84,9 @@ const ApplicationForm = ({ email, setEmail, phone, setPhone, setCountry, country
           <div className='flex gap-3'>
             <select className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
               {
-                COUNTRIES.map((item: any) => {
+                COUNTRIES.map((item: any, index: any) => {
                   return(
-                  <option value={item.countryName}>{item.emoji}</option>
+                  <option key={index} value={item.countryName}>{item.emoji}</option>
                   );
                 })
               }

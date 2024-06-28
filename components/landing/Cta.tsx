@@ -13,7 +13,7 @@ export const Cta = () => {
             Don&apos;t let your visitors see a poor landing.
           </p>
         </div>
-        <div className="flex-shrink-0 w-full text-center lg:w-auto">
+        {/* <div className="flex-shrink-0 w-full text-center lg:w-auto">
           <a
             href="/login"
             rel="noopener"
@@ -21,7 +21,7 @@ export const Cta = () => {
           >
             Create an Account for Free
           </a>
-        </div>
+        </div> */}
       </div>
     </Container>
   );
