@@ -1,5 +1,5 @@
 import { Container } from "@/components/landing/Container";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
@@ -67,6 +67,17 @@ const Dashboard = () => {
     };
 
     const getData = async () => {
+        await axios.get(`${BACKEND_URL}/checkUser?walletAddress=${address}`)
+        .then(function (response) {
+            console.log(response);
+            setUserData(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+        });
+
         await axios.get(`${BACKEND_URL}/getProjectsByUser?walletAddress=${address}`)
             .then(function (response) {
                 console.log(response);
@@ -78,19 +89,9 @@ const Dashboard = () => {
             })
             .finally(function () {
             });
-        await axios.get(`${BACKEND_URL}/checkUser?walletAddress=${address}`)
-            .then(function (response) {
-                console.log(response);
-                setUserData(response.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .finally(function () {
-            });
-
+       
         if(projects) {
-            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${projects[0]?._id}&apiKey=123-abcd`)
+            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=${userData?.apiKey}`)
                 .then(function (response) {
                     console.log(response);
                     // setUserData(response.data)
@@ -106,7 +107,7 @@ const Dashboard = () => {
 
     const getProjects = async() => {
         if(projects) {
-            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${projects[0]?._id}&apiKey=123-abcd`)
+            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=123-abcd`)
                 .then(function (response) {
                     console.log(response);
                     // setUserData(response.data)
@@ -119,6 +120,13 @@ const Dashboard = () => {
                 });
         }
     }
+
+    // useEffect(() => {
+    //     if(!address) {
+    //         return;
+    //     }
+    //     getData()
+    // }, [])
 
     useEffect(() => {
         if(!address) {
@@ -362,7 +370,7 @@ const Dashboard = () => {
                         <div className="flex flex-col py-3 px-5 items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
                             <span className="font-semibold text-sm">Average Visits per User</span>
                             <p className="text-6xl font-semibold text-gray-200">
-                                {projectData?.averagePageViewsPerUser}
+                                {projectData?.averagePageViewsPerUser?.toFixed(2) || 0}
                             </p>
                         </div>
                     </div>
@@ -612,7 +620,7 @@ const Dashboard = () => {
                             <div className="flex flex-col py-3 px-5 ml-5 items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
                                 <span className="font-semibold text-sm">Error Percentage</span>
                                 <p className="text-6xl font-semibold text-gray-200">
-                                    {((projectData?.errorsFacedByUser / projectData?.totalPageViews) * 100).toFixed(2)}%
+                                    {(Number(Number(projectData?.errorsFacedByUser) / (Number(projectData?.totalPageViews) + Number(projectData?.errorsFacedByUser))) * 100).toFixed(2)}%
                                 </p>
                             </div>
 
@@ -1008,7 +1016,7 @@ const Dashboard = () => {
                                         <option value={"null"}>
                                             No Projects Found
                                         </option>
-                                    : projects.map((item, index) => {
+                                    : projects?.map((item, index) => {
                                     return(
                                         <option key={index} value={item?._id}>{item?.projectName}</option>
                                     );

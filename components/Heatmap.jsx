@@ -9,19 +9,23 @@ const Heatmap = ({ clickData, scrollData }) => {
     return;
   }
 
-  const heatmapInstance = h337.create({
-    container: heatmapContainer.current,
-  });
+  useEffect(() => {
+    const heatmapInstance = h337.create({
+      container: heatmapContainer.current,
+    });
+  
+    const heatmapData = [
+      ...clickData?.map(d => ({ x: d.x, y: d.y, value: 1 })),
+      ...scrollData?.map(d => ({ x: d.scrollX, y: d.scrollY, value: 1 }))
+    ];
+  
+    heatmapInstance.setData({
+      max: 10,
+      data: heatmapData,
+    });
+  }, [clickData, scrollData])
 
-  const heatmapData = [
-    ...clickData?.map(d => ({ x: d.x, y: d.y, value: 1 })),
-    ...scrollData?.map(d => ({ x: d.scrollX, y: d.scrollY, value: 1 }))
-  ];
-
-  heatmapInstance.setData({
-    max: 10,
-    data: heatmapData,
-  });
+  
 
   return <div ref={heatmapContainer} style={{ width: '600px', height: '400px' }} />;
 };

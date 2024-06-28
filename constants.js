@@ -1,4 +1,4 @@
-export const BACKEND_URL = "http://localhost:5050"
+export const BACKEND_URL = "https://purring-agency-slow.functions.on-fleek.app"
 
 export const COUNTRIES = [
     { "countryName": "Afghanistan", "emoji": "\uD83C\uDDE6\uD83C\uDDEB" },
