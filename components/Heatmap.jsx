@@ -5,9 +5,9 @@ import h337 from 'heatmap.js';
 const Heatmap = ({ clickData, scrollData }) => {
   const heatmapContainer = useRef(null);
 
-  if(!clickData || !scrollData) {
-    return;
-  }
+  // if(!clickData || !scrollData) {
+  //   return;
+  // }
 
   useEffect(() => {
     const heatmapInstance = h337.create({

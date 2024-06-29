@@ -31,7 +31,7 @@ export default function Home() {
         preTitle="TrackU Benefits"
         title="Why should you use our Analytics SDK"
       >
-        TrackU is a state-of-the-art analytics tool for seamless integration across web3 and web2 applications. Utilizing Fleek's on-chain edge functions, it offers reduced latency, minimal overhead, auto-scaling, and cost-effective pricing, bridging web3 and web2 ecosystems.
+        TrackU is a state-of-the-art analytics tool for seamless integration across web3 and web2 applications. Utilizing Fleek on-chain edge functions, it offers reduced latency, minimal overhead, auto-scaling, and cost-effective pricing, bridging web3 and web2 ecosystems.
       </SectionTitle>
 
       <Benefits data={benefitOne} />
