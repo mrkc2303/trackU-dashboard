@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Container } from "@/components/landing/Container";
 import heroImg from "../../public/img/hero.png";
 import fleekImg from "../../public/img/fleek.png"
+import baseImg from "../../public/img/base.png"
+import coinbaseImg from "../../public/img/coinbase.png"
 
 export const Hero = () => {
   return (
@@ -22,7 +24,7 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener"
                 className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
-                Download for Free
+                Setup the Project
               </a>
               <a
                 href="https://github.com/mrkc2303/trackU-SDK"
@@ -61,13 +63,13 @@ export const Hero = () => {
       </Container>
       <Container>
         <div className="flex flex-col justify-center">
-          <div className="text-xl text-center text-gray-700 dark:text-white">
+          {/* <div className="text-xl text-center text-gray-700 dark:text-white">
             Trusted by <span className="text-indigo-600">2000+</span>{" "}
             customers worldwide
-          </div>
+          </div> */}
 
-          <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
+          <div className="flex flex-wrap justify-center items-center gap-5 mt-10 md:justify-around">
+            {/* <div className="pt-2 text-gray-400 dark:text-gray-400">
               <AmazonLogo />
             </div>
             <div className="text-gray-400 dark:text-gray-400">
@@ -78,10 +80,18 @@ export const Hero = () => {
             </div>
             <div className="pt-1 text-gray-400 dark:text-gray-400">
               <NetflixLogo />
+            </div> */}
+            <div className="pt-2 text-gray-400 dark:text-gray-400">
+              <Image src={fleekImg} width="200"
+              height="150" alt="Fleek Logo"/>
             </div>
             <div className="pt-2 text-gray-400 dark:text-gray-400">
-              <Image src={fleekImg} width="100"
-              height="80" alt="Fleek Logo"/>
+              <Image src={baseImg} width="200"
+              height="150" alt="Base Logo"/>
+            </div>
+            <div className="pt-2 text-gray-400 dark:text-gray-400">
+              <Image src={coinbaseImg} width="200"
+              height="150" alt="Base Logo"/>
             </div>
           </div>
         </div>

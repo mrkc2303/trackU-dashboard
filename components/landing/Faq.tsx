@@ -36,21 +36,21 @@ export const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
+    question: "What is TrackU and how does it benefit my application?",
+    answer: "TrackU is a cutting-edge analytics tool designed for seamless integration across both web3 and web2 applications. It leverages on-chain edge functions to offer reduced latency, minimized overhead, auto-scaling capabilities, cost-effective pricing, and self-sovereignty. By using TrackU, your application can enjoy the robust benefits of web3 infrastructure while gaining comprehensive insights into user activities.",
   },
   {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
+    question: "How does TrackU ensure data security and compliance?",
+    answer: "TrackU ensures data security through end-to-end encryption and decentralized storage. This approach provides self-sovereignty and reduces central points of failure, ensuring that your data is protected and compliant with data protection regulations.",
   },
   {
-    question: "What is your refund policy? ",
+    question: "What features does TrackU offer for tracking user interactions?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "TrackU offers a comprehensive set of features for tracking user interactions, including page view tracking, event heatmaps, custom event tracking, error and performance tracking, and automated reward assignment. These features enable you to gain real-time insights into user behavior and improve engagement and retention.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Can TrackU handle high traffic loads and scale as needed?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "Yes, TrackU is designed with auto-scaling capabilities to handle varying traffic loads. It can manage millions of events per second, ensuring performance and reliability during high-traffic periods. This makes it a cost-effective solution that adapts to your needs and reduces overhead costs associated with traditional centralized analytics solutions.",
   },
 ];

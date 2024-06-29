@@ -91,6 +91,7 @@ const Dashboard = () => {
             });
        
         if(projects) {
+            console.log(userData)
             await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=${userData?.apiKey}`)
                 .then(function (response) {
                     console.log(response);
@@ -107,7 +108,7 @@ const Dashboard = () => {
 
     const getProjects = async() => {
         if(projects) {
-            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=123-abcd`)
+            await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=${userData?.apiKey}`)
                 .then(function (response) {
                     console.log(response);
                     // setUserData(response.data)
@@ -545,6 +546,74 @@ const Dashboard = () => {
                                 <p className="text-4xl font-semibold text-gray-200">
                                     {formatDuration(projectData?.slowestLoadTime)}
                                 </p>
+                            </div>
+                        </div>
+                        <div className="w-full flex gap-5 mt-5">
+                            <div className="w-1/2">
+                                <h3 className="font-semibold text-2xl">Operating System Analysis</h3>
+                                <table className="mt-5 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" className="px-6 py-3">
+                                                OS
+                                            </th>
+                                            <th scope="col" className="px-6 py-3">
+                                                Count
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            projectData?.uniqueOs?.map((item, index) => {
+                                                return(
+                                                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            {item?.type}
+                                                        </th>
+                                                        <td className="px-6 py-4">
+                                                            {item?.count}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })
+                                        }
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="w-1/2">
+                                <h3 className="font-semibold text-2xl">Browser Analysis</h3>
+                                <table className="mt-5 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" className="px-6 py-3">
+                                                Browser
+                                            </th>
+                                            <th scope="col" className="px-6 py-3">
+                                                Count
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            projectData?.uniqueBrowsers?.map((item, index) => {
+                                                return(
+                                                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            {item?.type}
+                                                        </th>
+                                                        <td className="px-6 py-4">
+                                                            {item?.count}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })
+                                        }
+                                        
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

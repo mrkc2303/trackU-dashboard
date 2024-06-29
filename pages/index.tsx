@@ -14,6 +14,7 @@ import { Faq } from "@/components/landing/Faq";
 import { Cta } from "@/components/landing/Cta";
 
 import { benefitOne, benefitTwo } from "@/components/landing/data";
+import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   
@@ -27,12 +28,10 @@ export default function Home() {
     <Container>
       <Hero />
       <SectionTitle
-        preTitle="Nextly Benefits"
-        title=" Why should you use this landing page"
+        preTitle="TrackU Benefits"
+        title="Why should you use our Analytics SDK"
       >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
+        TrackU is a state-of-the-art analytics tool for seamless integration across web3 and web2 applications. Utilizing Fleek's on-chain edge functions, it offers reduced latency, minimal overhead, auto-scaling, and cost-effective pricing, bridging web3 and web2 ecosystems.
       </SectionTitle>
 
       <Benefits data={benefitOne} />
@@ -40,16 +39,14 @@ export default function Home() {
 
       <SectionTitle
         preTitle="Watch a video"
-        title="Learn how to fullfil your needs"
+        title="Learn how to setup our Analytics SDK"
       >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
+        TrackU bridges the gap between web3 and web2, providing seamless integration for all applications. Enjoy the benefits of reduced latency, minimized overhead, auto-scaling capabilities, cost-effective pricing, and self-sovereignty with our cutting-edge analytics tool.
       </SectionTitle>
 
       <Video videoId="fZ0D0cnR88E" />
 
-      <SectionTitle
+      {/* <SectionTitle
         preTitle="Testimonials"
         title="Here's what our customers said"
       >
@@ -57,15 +54,15 @@ export default function Home() {
         Use this section to highlight your popular customers.
       </SectionTitle>
 
-      <Testimonials />
+      <Testimonials /> */}
 
       <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+        
       </SectionTitle>
 
       <Faq />
       <Cta />
+      {/* <Footer /> */}
     </Container>
   );
 }
