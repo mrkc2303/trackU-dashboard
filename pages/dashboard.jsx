@@ -67,6 +67,9 @@ const Dashboard = () => {
     };
 
     const getData = async () => {
+
+        let prj = 0;
+
         await axios.get(`${BACKEND_URL}/checkUser?walletAddress=${address}`)
         .then(function (response) {
             console.log(response);
@@ -82,6 +85,7 @@ const Dashboard = () => {
             .then(function (response) {
                 console.log(response);
                 setProjects(response.data)
+                prj = response.data.length
                 if(response.data.length != 0 || response.data) {
                     setSelectedProject(response.data[0]?._id)
                 }
@@ -92,7 +96,7 @@ const Dashboard = () => {
             .finally(function () {
             });
        
-        if(projects) {
+        if(prj) {
             console.log(userData)
             await axios.get(`${BACKEND_URL}/getProjectDetails?projectId=${selectedProject}&apiKey=${userData?.apiKey}`)
                 .then(function (response) {
@@ -160,6 +164,18 @@ const Dashboard = () => {
     }
 
     const Layout = () => {
+
+        if(!projects || projects.length === 0) {
+            return (
+                <div className="p-4 sm:ml-64">
+                    <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                        NO PROJECTS FOUND!! <br />
+                        PLEASE CREATE ONE
+                    </div>
+                </div>
+            );
+        }
+        
         return(
             <div className="p-4 sm:ml-64">
                 <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">

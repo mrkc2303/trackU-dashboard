@@ -161,7 +161,11 @@ const Registration = () => {
     await axios.get(`${BACKEND_URL}/checkUser?walletAddress=${address}`)
       .then(function (response) {
           console.log(response);
-          router.push("/dashboard")
+          if(response.data) {
+            router.push("/dashboard")
+          } else {
+            setCurrentStep((prev) => Math.min(prev + 1, steps.length))
+          }
       })
       .catch(function (error) {
           console.log(error);
