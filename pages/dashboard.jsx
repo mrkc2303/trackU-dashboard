@@ -29,7 +29,7 @@ const Dashboard = () => {
     const [refetch, setRefetch] = useState(false)
     const [userData, setUserData] = useState({})
     const [projectData, setProjectData] =useState({})
-    const [selectedProject, setSelectedProject] = useState(projects[0]?._id)
+    const [selectedProject, setSelectedProject] = useState(projects ? projects[0]?._id : "")
     const [selectedUser, setSelectedUser] = useState("NA")
     const [selectedUserData, setSelectedUserData] = useState({})
 
@@ -82,7 +82,9 @@ const Dashboard = () => {
             .then(function (response) {
                 console.log(response);
                 setProjects(response.data)
-                setSelectedProject(response.data[0]?._id)
+                if(response.data.length != 0 || response.data) {
+                    setSelectedProject(response.data[0]?._id)
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -96,6 +98,7 @@ const Dashboard = () => {
                 .then(function (response) {
                     console.log(response);
                     // setUserData(response.data)
+                    setContentArea("Dashboard")
                     setProjectData(response.data)
                 })
                 .catch(function (error) {
@@ -103,6 +106,8 @@ const Dashboard = () => {
                 })
                 .finally(function () {
                 });
+        } else {
+            setContentArea("Add_Project")
         }
     }
 
@@ -905,7 +910,7 @@ const Dashboard = () => {
                     .then(function (response) {
                       console.log(response);
                       //   router.push("/dashboard")
-                      setContentArea("")
+                      setContentArea("Dashboard")
                     })
                     .catch(function (error) {
                       console.log(error);
